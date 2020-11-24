@@ -1,19 +1,12 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var fs = require("fs");
-const http = require("http");
+
 
 var app = express();
 var jsonParser = bodyParser.json();
+const PORT = process.env.PORT || 3000;
 
-http.createServer(function(request,response){
-
-    console.log(message);
-    response.end(message);
-
-}).listen(3000, "127.0.0.1",()=>{
-    console.log("Сервер начал прослушивание запросов");
-});
 
 app.use(express.static(__dirname + "/public"));
 // получение списка данных
@@ -127,6 +120,6 @@ app.put("/api/users", jsonParser, function(req, res){
     }
 });
 
-app.listen(3000, function(){
+app.listen(PORT, function(){
     console.log("Сервер ожидает подключения...");
 });
